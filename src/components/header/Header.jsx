@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./navbar";
-import Brand from "./brand";
-import MobileNav from "./mobileNav";
+import Navbar from "./Navbar";
+import Brand from "./Brand";
+import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
-    <header className="fixed border py-2 w-full top-0 left-0 z-10 flex items-center bg-transparent">
-      <div className="container">
+    <header className="fixed py-2 w-full top-0 left-0 z-10 flex items-center bg-Headline">
+      <div className="container ">
         <div className="relative flex items-center justify-between">
           <Brand logo={"Nasi Goreng MK"} />
           {/* Navigation */}
