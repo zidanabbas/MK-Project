@@ -23,13 +23,13 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
       },
       colors: {
-        Background: "#0f0e17",
-        Button: "#ff8906",
-        Headline: "#fffffe",
-        Paragraph: "#a7a9be",
-        "Button-text": "#fffffe",
+        Background: "#f2f7f5", //white
+        Button: "#faae2b", //yellow
+        Headline: "#00473e", //green
+        Paragraph: "#475d5b", //grey
+        "Button-text": "#00473e", //green
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
