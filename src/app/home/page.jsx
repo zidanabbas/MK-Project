@@ -1,6 +1,7 @@
 import React from "react";
 import Carrousel from "@/components/Carrousel";
 import Hero from "@/components/Hero";
+import Footer from "@/components/footer/Footer";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
           </h4>
           <Carrousel />
         </div>
+        <Footer />
       </section>
     </main>
   );
