@@ -37,27 +37,29 @@ export default function HomePage() {
               Profile
             </h1>
             <div className="grid px-4">
-              <h4 className="text-xl py-2 text-Headline font-semibold">
-                Owner
-              </h4>
-              <p className="text-base text-Paragraph">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Consectetur, id.
-              </p>
-              <div className="w-full h-[500px] grid sm:grid-cols-2 place-items-center">
+              <div className="my-3">
+                <h4 className="text-xl py-2 text-Headline font-semibold">
+                  Owner
+                </h4>
+                <p className="text-base text-Paragraph">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Consectetur, id.
+                </p>
+              </div>
+              <div className="w-full max-h-[700px] sm:h-[500px] grid sm:grid-cols-2 place-items-center">
                 <div className="w-full">
                   <Image
                     src={`https://images.pexels.com/photos/887827/pexels-photo-887827.jpeg?auto=compress&cs=tinysrgb&w=600`}
-                    className="object-cover h-96 rounded-badge"
+                    className="object-cover h-96 rounded-badge my-2"
                     width={500}
                     height={500}
                   />
                 </div>
                 <div className="w-full h-96 p-2 text-center">
-                  <h2 className="font-bold text-2xl py-2 text-Headline">
+                  <h2 className="font-bold text-xl sm:text-2xl py-2 text-Headline">
                     Muhammad Kadir Panjaitan
                   </h2>
-                  <p className="text-slate-700 text-balance">
+                  <p className="text-slate-700 text-balance line-clamp-5 md:line-clamp-none ">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Eos ex neque eaque quos corrupti fuga tempora. Obcaecati
                     amet minima numquam quaerat quam, beatae recusandae ducimus
@@ -68,7 +70,6 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-
               <ButtonView href={"/profile"}>Selengkapnya</ButtonView>
             </div>
           </div>
