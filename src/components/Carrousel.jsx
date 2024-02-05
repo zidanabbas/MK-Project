@@ -3,7 +3,7 @@ import CardProduct from "./card/CardProduct";
 
 export default function Carrousel() {
   return (
-    <div className="min-w-full carousel carousel-center max-w-md p-4 space-x-4 bg-slate-100">
+    <div className="min-w-full h-[500px] carousel carousel-center max-w-md p-4 space-x-4 bg-transparent">
       <div className="carousel-item">
         <CardProduct />
       </div>
