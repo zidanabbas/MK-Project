@@ -53,6 +53,7 @@ export default function HomePage() {
                     className="object-cover h-96 rounded-badge my-2"
                     width={500}
                     height={500}
+                    alt="Kadir Panjaitan"
                   />
                 </div>
                 <div className="w-full h-96 p-2 text-center">
