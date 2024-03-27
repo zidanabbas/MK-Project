@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CardProduct() {
   return (
-    <div className="card max-w-80 max-h-96 md:max-h-[460px] bg-base-100 shadow-xl">
+    <div className="card max-w-80 max-h-96 md:max-h-[460px] bg-base-100 shadow-xl overflow-hidden">
       <figure>
         <Image
           src={
