@@ -2,18 +2,19 @@ import React from "react";
 import Carrousel from "@/components/Carrousel";
 import Hero from "@/components/Hero";
 import Footer from "@/components/footer/Footer";
-import Link from "next/link";
 import Image from "next/image";
 import ButtonView from "@/components/button/page";
+import ContainerSection from "@/components/layouts/section/page";
+import ContainerBody from "@/components/layouts/body/page";
 
 export default function HomePage() {
   return (
     <>
-      <main className="min-w-full min-h-[1000px] bg-Background overflow-hidden">
+      <ContainerBody>
         <div className="w-full min-h-screen">
           <Hero />
         </div>
-        <section className="min-h-screen p-0 pt-14 pb-16 border border-b-black">
+        <ContainerSection>
           <div className="container flex justify-center flex-col p-3 border-black">
             <h1 className="text-2xl px-4 py-2 text-white font-semibold bg-Headline">
               Our Menu
@@ -28,10 +29,12 @@ export default function HomePage() {
               </p>
             </div>
             <Carrousel />
-            <ButtonView href={"/menu"}>View All</ButtonView>
+            <div className="flex w-full justify-center">
+              <ButtonView href={"/menu"}>View All</ButtonView>
+            </div>
           </div>
-        </section>
-        <section className="min-h-screen pt-14 pb-16">
+        </ContainerSection>
+        <ContainerSection>
           <div className="container">
             <h1 className="text-2xl px-4 py-2 text-white font-semibold bg-Headline">
               Profile
@@ -46,7 +49,7 @@ export default function HomePage() {
                   Consectetur, id.
                 </p>
               </div>
-              <div className="w-full max-h-[700px] sm:h-[500px] grid sm:grid-cols-2 place-items-center">
+              <div className="w-full max-h-[700px] sm:h-[500px]  grid sm:grid-cols-2 place-items-center">
                 <div className="w-full">
                   <Image
                     src={`https://images.pexels.com/photos/887827/pexels-photo-887827.jpeg?auto=compress&cs=tinysrgb&w=600`}
@@ -71,11 +74,13 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-              <ButtonView href={"/profile"}>Selengkapnya</ButtonView>
+              <div className="flex w-full justify-center">
+                <ButtonView href={"/profile"}>Selengkapnya</ButtonView>
+              </div>
             </div>
           </div>
-        </section>
-      </main>
+        </ContainerSection>
+      </ContainerBody>
       <Footer />
     </>
   );
