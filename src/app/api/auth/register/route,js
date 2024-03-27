@@ -1,0 +1,20 @@
+import prisma from "@/lib/prisma.js";
+import { NextResponse } from "next/server";
+
+export async function POST(request) {
+  const { fullname, lastname, email, no_telepon, alamat, password } =
+    await request.json();
+  const data = { fullname, lastname, email, no_telepon, alamat, password };
+  const user = await prisma.user.create({ data });
+  if (!user) {
+    return NextResponse.json({
+      status: 500,
+      message: "Failed to add user",
+    });
+  } else {
+    return NextResponse.json({
+      status: 200,
+      message: "Success",
+    });
+  }
+}
