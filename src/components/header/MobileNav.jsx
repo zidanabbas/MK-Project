@@ -36,12 +36,12 @@ export default function MobileNav() {
                 </div>
 
                 <div className="flex group">
-                  <a
-                    href="#"
+                  <Link
+                    href={"/menu"}
                     className="p-3 text-gray-400 hover:text-yellow-500"
                   >
                     <span className="flex flex-col items-center">
-                      <Icon path={mdiSilverware} size={1} title="Explore" />
+                      <Icon path={mdiSilverware} size={1} title="menu" />
 
                       <span className="text-xs mb-2 transition-all duration-200">
                         Menu
@@ -52,7 +52,7 @@ export default function MobileNav() {
 									transition-all duration-150 delay-100"
                       ></span>
                     </span>
-                  </a>
+                  </Link>
                 </div>
                 {/* 
                 <div className="flex group">
@@ -80,8 +80,8 @@ export default function MobileNav() {
                 </div> */}
 
                 <div className="flex group">
-                  <a
-                    href="#"
+                  <Link
+                    href={"/cart"}
                     className="p-3 text-gray-400 hover:text-yellow-500"
                   >
                     <span className="flex flex-col items-center">
@@ -96,7 +96,7 @@ export default function MobileNav() {
 									transition-all duration-150 delay-100"
                       ></span>
                     </span>
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="flex group">
