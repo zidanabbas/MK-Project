@@ -12,7 +12,7 @@ export default function NavMobile() {
           <Image src={logoMK} alt="Logo MK" width={40} height={50} />
         </Brand>
       </div>
-      <nav className="flex items-center h-full justify-center">
+      <div className="flex items-center h-full justify-center">
         <ul className="block">
           <div className="group">
             <Link
@@ -39,7 +39,7 @@ export default function NavMobile() {
             </Link>
           </div>
         </ul>
-      </nav>
+      </div>
     </nav>
   );
 }
