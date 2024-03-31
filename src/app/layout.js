@@ -1,7 +1,6 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
-import MobileNav from "@/components/header/MobileNav";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
