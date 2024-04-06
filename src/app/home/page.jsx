@@ -1,9 +1,9 @@
 import React from "react";
-import Carrousel from "@/components/Carrousel";
-import Hero from "@/components/Hero";
-import Footer from "@/components/footer/Footer";
+import Carrousel from "@/components/fragments/Carrousel";
+import Hero from "@/components/fragments/Hero";
+import Footer from "@/components/fragments/Footer";
 import Image from "next/image";
-import ButtonView from "@/components/button/page";
+import Button from "@/components/fragments/Button";
 import ContainerSection from "@/components/layouts/section/page";
 import ContainerBody from "@/components/layouts/body/page";
 
@@ -11,11 +11,9 @@ export default function HomePage() {
   return (
     <>
       <ContainerBody>
-        <div className="w-full min-h-screen">
-          <Hero />
-        </div>
+        <Hero />
         <ContainerSection>
-          <div className="container flex justify-center flex-col p-3 border-black">
+          <div className="container flex  justify-center flex-col p-3 border-black">
             <h1 className="text-2xl px-4 py-2 text-white font-semibold bg-Headline">
               Our Menu
             </h1>
@@ -30,7 +28,7 @@ export default function HomePage() {
             </div>
             <Carrousel />
             <div className="flex w-full justify-center">
-              <ButtonView href={"/menu"}>View All</ButtonView>
+              <Button href={"/menu"}>View All</Button>
             </div>
           </div>
         </ContainerSection>
@@ -75,7 +73,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex w-full justify-center">
-                <ButtonView href={"/profile"}>Selengkapnya</ButtonView>
+                <Button href={"/profile"}>Selengkapnya</Button>
               </div>
             </div>
           </div>
