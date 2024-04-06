@@ -13,7 +13,7 @@ export default function Carrousel() {
   return (
     <div className="carousel carousel-end rounded-box gap-4">
       {products.map((product) => (
-        <div className="carousel-item">
+        <div className="carousel-item" key={product.id}>
           <CardMenu key={product.id}>
             <CardMenu.Header alt={product.title} src={product.image} />
             <CardMenu.Body title={product.title}>
