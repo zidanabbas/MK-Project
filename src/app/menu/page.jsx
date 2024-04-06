@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "@/components/menu/Menu";
 import Image from "next/image";
 import BannerFoods from "@/assets/image/banner-foods.png";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/components/fragments/Footer";
 
 export const metadata = {
   title: "Menu - Nasi Goreng MK",
@@ -35,27 +35,13 @@ export default function PageMenu() {
           <h2 className="p-2 font-medium text-2xl bg-Headline font-poppins text-white mb-2">
             Makanan
           </h2>
-          <Menu
-            titleMenuName={"Makanan"}
-            alt={"Nasi Goreng"}
-            src={
-              "https://i.pinimg.com/236x/b2/31/9b/b2319bd02a85d4bcb9f1b36c6759c862.jpg"
-            }
-            name={"Nasi Goreng"}
-          />
+          <Menu />
         </section>
         <section id="menu-minuman" className="container pt-5">
           <h2 className="p-2 font-medium text-2xl bg-Headline font-poppins text-white mb-2">
             Minuman
           </h2>
-          <Menu
-            titleMenuName={"Minuman"}
-            alt={"Minuman"}
-            src={
-              "https://i.pinimg.com/236x/96/ae/63/96ae630a409f4d644acab0139d412974.jpg"
-            }
-            name={"Es Teh Manis"}
-          />
+          <Menu />
         </section>
         <Footer />
       </div>
