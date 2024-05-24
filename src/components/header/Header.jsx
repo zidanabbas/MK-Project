@@ -18,7 +18,7 @@ export default function Header() {
       <div className="container relative">
         <div className="relative flex items-center justify-between">
           <Brand>
-            <Image src={logoMK} alt="Logo MK" width={40} height={50} />
+            <Image src={logoMK} alt="Logo MK" width={40} height={40} />
           </Brand>
           <div className="flex items-center px-4 gap-2">
             <Navbar />

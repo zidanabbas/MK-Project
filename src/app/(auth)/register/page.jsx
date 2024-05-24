@@ -1,6 +1,6 @@
 import FormRegister from "@/components/fragments/FormRegister";
 import AuthLayouts from "@/components/layouts/AuthLayouts/page";
-import ContainerBody from "@/components/layouts/body/page";
+import ContainerBody from "@/components/layouts/BodyLayouts/page";
 import React from "react";
 
 export default function RegisterPage() {

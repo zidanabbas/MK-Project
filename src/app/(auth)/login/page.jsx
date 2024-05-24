@@ -1,6 +1,6 @@
 import FormLogin from "@/components/fragments/FormLogin";
 import AuthLayouts from "@/components/layouts/AuthLayouts/page";
-import ContainerBody from "@/components/layouts/body/page";
+import ContainerBody from "@/components/layouts/BodyLayouts/page";
 import React from "react";
 
 export default function LoginPage() {

@@ -1,18 +1,22 @@
+import axios from "axios";
+
+const productsEndPoint = process.env.NEXT_PUBLIC_PRODUCTS;
+
 export const getProducts = async (callback) => {
   try {
-    const response = await fetch(process.env.NEXT_PUBLIC_PRODUCTS, {
-      cache: "no-store",
-    });
-    const { data } = await response.json();
-    callback(data);
-  } catch (error) {
-    console.error(error);
+    const response = await axios.get(productsEndPoint);
+    if (response.status !== 200) {
+      throw new Error("Failed to fetch data");
+    }
+    callback(response.data);
+  } catch (err) {
+    console.error(err);
   }
 };
 
 export const getDetailProduct = async (id, callback) => {
   try {
-    const response = await fetch(process.env.NEXT_PUBLIC_PRODUCTS + id);
+    const response = await fetch(`${productsEndPoint}/${id}`);
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }

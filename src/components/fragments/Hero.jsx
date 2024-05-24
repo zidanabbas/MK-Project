@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 export default function Hero() {
   return (
@@ -12,18 +13,14 @@ export default function Hero() {
       >
         <div className="hero-overlay bg-opacity-40"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
+          <div className="max-w-lg">
             <h1 className="mb-5 text-5xl font-bold text-white">
               Nasi Goreng MK
             </h1>
-            <p className="mb-5 text-slate-300">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <button className="btn bg-Headline text-Button hover:bg-Button hover:text-Headline">
-              Pesan Sekarang
-            </button>
+            <h2 className="mb-5 text-white font-bold text-2xl">
+              Authentic taste of Indonesian spices
+            </h2>
+            <Button>Pesan Sekarang</Button>
           </div>
         </div>
       </div>
