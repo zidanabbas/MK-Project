@@ -12,6 +12,12 @@ const nextConfig = {
         hostname: "i.pinimg.com",
         pathname: "/**",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "4000",
+        pathname: "/images/**",
+      },
     ],
   },
   env: {
@@ -20,6 +26,7 @@ const nextConfig = {
         ? "https://nasigorengmk.vercel.app/"
         : "http://localhost:3000/",
   },
+  reactStrictMode: true,
 };
 
 export default nextConfig;
