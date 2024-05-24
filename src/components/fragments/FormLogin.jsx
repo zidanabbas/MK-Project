@@ -3,19 +3,36 @@ import React from "react";
 import FormInput from "../FormInput/FormInput";
 import Link from "next/link";
 import Button from "./Button";
+import { login } from "@/services/auth-service.js";
+import { useRouter } from "next/navigation";
 
 export default function FormLogin() {
+  const router = useRouter();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("click");
+    const formData = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+
+    login(formData, (status, res) => {
+      if (status) {
+        localStorage.setItem("token", res.token);
+        router.push("/menu");
+      } else {
+        console.log("gagal login");
+      }
+    });
   };
+
   return (
     <form action="" onSubmit={handleLogin}>
       <div className="flex flex-col items-center">
         <FormInput
-          label="Email"
+          label="email"
           name="email"
-          type="text"
+          type="email"
           placeholder="Masukkan email Anda..."
         />
         <FormInput
@@ -25,9 +42,7 @@ export default function FormLogin() {
           placeholder="Masukkan Password Anda...."
         />
       </div>
-      <Button href={"/login"} type="submit" onClick={handleLogin}>
-        Login
-      </Button>
+      <Button type="submit">Login</Button>
       <div className="flex gap-x-2 font-Poppins">
         <p className="font-Poppins text-base text-white">
           Dont have an account?
