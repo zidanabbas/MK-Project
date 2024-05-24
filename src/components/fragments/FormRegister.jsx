@@ -1,17 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import FormInput from "../FormInput/FormInput";
 import Link from "next/link";
 import Button from "./Button";
+import { register } from "@/services/auth-service";
+import { useRouter } from "next/navigation";
 
 export default function FormRegister() {
+  const [showMessage, setShowMessage] = useState("");
+  const router = useRouter();
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log("click");
+    const data = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    register(data, (status, res) => {
+      if (status) {
+        router.push("/login");
+        setShowMessage(res.message);
+      } else {
+        console.log(res.message);
+      }
+    });
   };
   return (
-    <form action="">
+    <form onSubmit={handleRegister}>
       <div className="flex flex-col items-center">
+        {showMessage && <p>{showMessage}</p>}
         <FormInput
           label="Name"
           type="text"
@@ -25,20 +42,12 @@ export default function FormRegister() {
           name="email"
         />
         <FormInput
-          label="Username"
-          name="username"
-          type="text"
-          placeholder="Masukkan Username Anda..."
-        />
-        <FormInput
           label="Password"
           name="password"
           type="password"
           placeholder="Masukkan Password Anda..."
         />
-        <Button href={"/register"} type="submit" onClick={handleRegister}>
-          Register
-        </Button>
+        <Button type="submit">Register</Button>
         <div className="flex gap-x-2 font-Poppins">
           <p className="font-Poppins text-base text-paragraph">
             You have an account?
