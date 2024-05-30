@@ -1,7 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const authEndPoint = process.env.NEXT_PUBLIC_AUTH;
+const authEndPoint = process.env.NEXT_PUBLIC_URL;
 
 export const login = (formData, callback) => {
   axios

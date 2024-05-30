@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import FormInput from "../FormInput/FormInput";
+import FormInput from "@/components/fragments/FormInput/FormInput";
 import Link from "next/link";
-import Button from "./Button";
+import Button from "@/components/ui/Button";
 import { register } from "@/services/auth-service";
 import { useRouter } from "next/navigation";
 

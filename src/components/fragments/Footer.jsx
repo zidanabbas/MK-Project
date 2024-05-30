@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import LogoMK from "@/assets/image/logo-mk.png";
-import IconFacebook from "../icons/IconFacebook";
-import IconWhatsapp from "../icons/IconWhatsapp";
-import IconInstagram from "../icons/IconInstagram";
+import IconFacebook from "../ui/icons/IconFacebook";
+import IconWhatsapp from "../ui/icons/IconWhatsapp";
+import IconInstagram from "../ui/icons/IconInstagram";
 export default function Footer() {
   return (
     <footer className="footer footer-center p-10 bg-Headline text-white bottom-0">

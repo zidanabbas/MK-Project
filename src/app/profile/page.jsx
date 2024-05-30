@@ -1,4 +1,4 @@
-"use client";
+import Hero from "@/components/ui/Hero";
 import ProfilOwner from "@/components/fragments/ProfilOwner";
 import Layouts from "@/components/layouts/BodyLayouts/page";
 import ContainerSection from "@/components/layouts/SectionLayouts/page";
@@ -8,40 +8,21 @@ export default function ProfilePage() {
   return (
     <>
       <Layouts>
-        <ContainerSection classname={"bg-Headline"}>
-          <div className="container mt-6 border">
-            <h3 className="text-white font-semibold text-3xl p-2  ">
-              Nasi Goreng MK
-            </h3>
-          </div>
-          <div className="relative translate-y-64 container mx-auto bg-Background md:flex justify-evenly items-center shadow-lg rounded-lg">
-            <div className="px-5 py-4 items-center flex justify-center md:block gap-2 md:gap-0 text-Primary font-semibold">
-              <span className="w-full inline-block text-center text-2xl uppercase py-2">
-                Visi
-              </span>
-              <p className="text-lg max-w-lg text-pretty p-2 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Molestiae magnam tempora repellat incidunt hic esse rerum, sed
-                possimus dolor quas.
-              </p>
-            </div>
-            <div className="px-5 py-4 items-center flex justify-center md:block gap-2 md:gap-0 text-Primary font-semibold">
-              <span className="w-full inline-block text-center text-2xl uppercase py-2">
-                Misi
-              </span>
-              <p className="text-text-Paragraph text-lg max-w-lg p-2 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Molestiae magnam tempora repellat incidunt hic esse rerum, sed
-                possimus dolor quas.
-              </p>
-            </div>
-          </div>
-        </ContainerSection>
-        <ContainerSection classname={"md:pt-20 pt-52"}>
+        <Hero
+          title={"PROFESSIONAL CHEF"}
+          description={"The man behind the kitchen"}
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1588416820614-f8d6ac6cea56?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGtpdGNoZW4lMjByZXN0YXVyYW50fGVufDB8fDB8fHww)",
+          }}
+        />
+        <ContainerSection>
           <ProfilOwner
             alt={"Muhammad Kadir Panjaitan"}
             nameOwner={"Muhammad Kadir Panjaitan"}
-            description={"adasd"}
+            description={
+              "Once, an unrivaled culinary maestro, bringing the wonders of Japanese cuisine to every dish. As the former top Chef of a prestigious Japanese company, has left an unforgettable legacy in the culinary world."
+            }
           />
         </ContainerSection>
       </Layouts>

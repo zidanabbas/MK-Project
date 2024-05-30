@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from "react";
 import CardMenu from "./CardMenu";
 import { getProducts } from "@/services/product-service.js";
+import Button from "../ui/Button";
+import { useDispatch } from "react-redux";
+import { addToCart, postCartToAPI } from "@/lib/redux/slices/cartSlices";
 
 export default function Carrousel() {
   const [products, setProducts] = useState([]);
@@ -17,6 +20,12 @@ export default function Carrousel() {
     };
     fetchProducts();
   }, []);
+
+  const handleAddToCart = async () => {
+    console.log("click");
+  };
+
+  const dispatch = useDispatch();
   return (
     <div className="carousel px-4 py-5 carousel-end rounded-box gap-3">
       {products.length > 0 ? (
@@ -27,7 +36,9 @@ export default function Carrousel() {
               <CardMenu.Body title={product.title}>
                 {product.description}
               </CardMenu.Body>
-              <CardMenu.Footer price={product.price} />
+              <CardMenu.Footer price={product.price}>
+                <Button onClick={handleAddToCart}>Add To Cart</Button>
+              </CardMenu.Footer>
             </CardMenu>
           </div>
         ))

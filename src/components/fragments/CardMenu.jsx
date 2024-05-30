@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "./Button";
+// import Button from "./Button";
 
 function CardMenu({ children }) {
   return (
@@ -41,13 +41,11 @@ const Body = ({ title, children }) => {
   );
 };
 
-const Footer = ({ price }) => {
+const Footer = ({ price, children }) => {
   return (
     <div className="flex flex-row items-center justify-between max-h-15 px-4 bg-slate-900 rounded-b-lg">
       <p className="text-lg leading-6 font-medium text-white">Rp. {price}</p>
-      <span className="px-2">
-        <Button>Add To Cart</Button>
-      </span>
+      <span className="px-2">{children}</span>
     </div>
   );
 };

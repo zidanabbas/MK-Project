@@ -27,7 +27,7 @@ export default function SideBar() {
     },
   ];
   return (
-    <div className="w-full bg-gray-800 h-screen px-4 py-8">
+    <div className="w-full bg-gray-800 h-screen px-4 py-8 sm:px-6 md:px-8 lg:px-10 xl:px-12">
       <h1 className="text-white text-xl font-semibold">MK Management</h1>
       {listNav.map((item, index) => (
         <ul className="mt-4" key={index}>
