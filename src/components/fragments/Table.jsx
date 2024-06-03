@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/Button/Button";
 import { getProducts } from "@/services/product-service";
 import Image from "next/image";
 

@@ -1,57 +1,53 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
-const authEndpoin = process.env.NEXT_PUBLIC_URL;
-
-// post ke API
-export const postCartToAPI = createAsyncThunk(
-  "cart/postCartToAPI",
-  async (cartItem, { rejectWithValue }) => {
-    try {
-      const response = await axios.post(`${authEndpoin}/carts`, cartItem);
-      // return response.data;
-      console.log(response.data);
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
 
 // Create a slice
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
     data: [],
-    status: null,
-    error: null,
   },
   reducers: {
     addToCart: (state, action) => {
-      const itemInCart = state.data.find(
+      state.data = state?.data ?? [];
+      const existingItem = state.data.find(
         (item) => item.id === action.payload.id
       );
-      if (itemInCart) {
-        itemInCart.quantity++;
+      if (existingItem) {
+        existingItem.quantity++;
       } else {
-        state.data.push(action.payload);
+        state.data.push({ ...action.payload, quantity: 1 });
+      }
+    },
+    removeFromCart: (state, action) => {
+      const filterCart = state.data.filter(
+        (item) => item.id !== action.payload
+      );
+      state.data = filterCart;
+    },
+    decrementQuantity: (state, action) => {
+      const existingItem = state.data.find(
+        (item) => item.id === action.payload
+      );
+      if (existingItem.quantity > 1) {
+        existingItem.quantity--;
+      } else {
+        state.data = state.data.filter((item) => item.id !== action.payload);
+      }
+    },
+    incrementQuantity: (state, action) => {
+      const existingItem = state.data.find(
+        (item) => item.id === action.payload
+      );
+      if (existingItem) {
+        existingItem.quantity++;
       }
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(postCartToAPI.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(postCartToAPI.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.data.push(action.payload);
-      })
-      .addCase(postCartToAPI.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload;
-      });
-  },
 });
-
 export default cartSlice.reducer;
-export const { addToCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  decrementQuantity,
+  incrementQuantity,
+} = cartSlice.actions;

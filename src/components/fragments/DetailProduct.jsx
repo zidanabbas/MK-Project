@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import Button from "../ui/Button";
-import BackButton from "../ui/BackButton";
+import Button from "@/components/ui/Button/Button";
+import BackButton from "@/components/ui/Button/BackButton";
 export default function DetailProduct({
   image,
   title,

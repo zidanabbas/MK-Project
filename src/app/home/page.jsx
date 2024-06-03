@@ -2,15 +2,15 @@
 import React from "react";
 import Carrousel from "@/components/fragments/Carrousel";
 import Hero from "@/components/ui/Hero";
-import Button from "@/components/ui/Button";
-import ContainerSection from "@/components/layouts/SectionLayouts/page";
+import Button from "@/components/ui/Button/Button";
 import Link from "next/link";
 import ProfilOwner from "@/components/fragments/ProfilOwner";
-import SectionPage from "@/components/fragments/SectionPage";
+import SectionPage from "@/components/layouts/SectionPage/SectionPage";
+import Layouts from "@/components/layouts/BodyLayouts/page";
 
 export default function HomePage() {
   return (
-    <>
+    <Layouts>
       <Hero
         title={"Nasi Goreng MK"}
         decription={"Kami menyediakan nasi goreng"}
@@ -21,39 +21,28 @@ export default function HomePage() {
       >
         <Button>Pesan Sekarang</Button>
       </Hero>
-      {/* Start Section Carrousel Menu */}
-      <ContainerSection>
-        <SectionPage
-          title={"Our Menu"}
-          description={"KAMI BERPIKIR ANDA MENYUKAI INI"}
-        >
-          <Carrousel />
-        </SectionPage>
+      <SectionPage
+        title={"Our Menu"}
+        description={"KAMI BERPIKIR ANDA MENYUKAI INI"}
+      >
+        <Carrousel />
         <Button>
           <Link href={"/menu"}>View All Menu</Link>
         </Button>
-      </ContainerSection>
-      {/* End Section Carrousel Menu */}
+      </SectionPage>
 
-      {/* Start Section Profile */}
-      <ContainerSection>
-        <SectionPage
-          title={"Profil Owner"}
-          description={"Lorem ipsum dolor sit amet"}
-        >
-          <ProfilOwner
-            alt={"Muhammad Kadir Panjaitan"}
-            nameOwner={"Muhammad Kadir Panjaitan"}
-            description={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus libero, voluptatum adipisci tenetur eaque iste aspernatur ex. Quod eveniet repellat non voluptates earum. Recusandae consectetur perferendis itaque vitae sed dolorum quae est, porro corporis eius voluptatum cupiditate optio soluta inventore?"
-            }
-          />
-        </SectionPage>
+      <SectionPage title={"Profil"} description={"Profile Owner"}>
+        <ProfilOwner
+          alt={"Muhammad Kadir Panjaitan"}
+          nameOwner={"Muhammad Kadir Panjaitan"}
+          description={
+            "Chef Muhammad Kadir Panjaitan telah berkontribusi secara signifikan dalam membawa pengalaman kuliner yang luar biasa di Restoran SAKURA. Dengan dedikasi terhadap detail dan rasa, Chef Muhammad Kadir Panjaitan terus berusaha untuk memberikan yang terbaik di setiap hidangan yang disajikan."
+          }
+        />
         <Button>
-          <Link href={"/profil"}>View Profile</Link>
+          <Link href={"/profile"}>View Profile</Link>
         </Button>
-      </ContainerSection>
-      {/* End Section Profile */}
-    </>
+      </SectionPage>
+    </Layouts>
   );
 }

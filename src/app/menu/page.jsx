@@ -1,18 +1,18 @@
 "use client";
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import { getProducts } from "@/services/product-service";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import CardMenu from "@/components/fragments/CardMenu";
-import BackButton from "@/components/ui/BackButton";
-import Button from "@/components/ui/Button";
+import BackButton from "@/components/ui/Button/BackButton";
+import Button from "@/components/ui/Button/Button";
 import Layouts from "@/components/layouts/BodyLayouts/page";
-
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/lib/redux/slices/cartSlices";
 export default function PageMenu() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -60,19 +60,32 @@ export default function PageMenu() {
             />
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 place-items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 px-4 py-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 px-4 py-2">
           {searchResult.map((product) => (
-            <Link href={`/menu/${product.id}`} key={product.id}>
-              <CardMenu key={product.id}>
+            <CardMenu key={product.id}>
+              <Link href={`/menu/${product.id}`} key={product.id}>
                 <CardMenu.Header alt={product.title} src={product.image} />
                 <CardMenu.Body title={product.title}>
                   {product.description}
                 </CardMenu.Body>
-                <CardMenu.Footer price={product.price}>
-                  <Button>Detail</Button>
-                </CardMenu.Footer>
-              </CardMenu>
-            </Link>
+              </Link>
+              <CardMenu.Footer price={product.price}>
+                <Button
+                  onClick={() =>
+                    dispatch(
+                      addToCart({
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                      })
+                    )
+                  }
+                >
+                  Add to Cart
+                </Button>
+              </CardMenu.Footer>
+            </CardMenu>
           ))}
         </div>
       </main>

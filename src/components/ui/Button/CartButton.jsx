@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import ModalCart from "../fragments/ModalCart";
+import ModalCart from "../../fragments/ModalCart";
 
 export default function CartIcon() {
   const cartItems = useSelector((state) => state.cart.data);

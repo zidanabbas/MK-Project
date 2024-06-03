@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import FormInput from "@/components/fragments/FormInput/FormInput";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/Button/Button";
 import { register } from "@/services/auth-service";
 import { useRouter } from "next/navigation";
 

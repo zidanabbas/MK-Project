@@ -6,7 +6,7 @@ import logoMK from "@/assets/image/logo-brand.png";
 
 export default function NavMobile() {
   return (
-    <nav className="lg:hidden absolute top-12 right-9 bg-Headline py-5 shadow-2xl rounded-lg max-w-64 w-full">
+    <nav className="lg:hidden absolute top-12 right-0 bg-Headline py-5 shadow-2xl rounded-b-lg max-w-64 w-full">
       <div className="w-20">
         <Brand>
           <Image src={logoMK} alt="Logo MK" width={40} height={50} />

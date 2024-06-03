@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from "@/components/fragments/header/Navbar";
+import Navbar from "@/components/fragments/Header/Navbar";
 import Brand from "@/components/ui/Brand";
 import Image from "next/image";
 import logoMK from "@/assets/image/logo-brand.png";
-import MobileNav from "@/components/fragments/header/MobileNav";
+import MobileNav from "@/components/fragments/Header/MobileNav";
 import Icon from "@mdi/react";
 import { mdiMenu, mdiMenuOpen } from "@mdi/js";
-import Cart from "@/components/ui/Cart";
+import CartIcon from "@/components/ui/CartButton";
 
 export default function Header() {
   const [isCLicked, setIsClicked] = useState(false);
@@ -22,7 +22,7 @@ export default function Header() {
             <Image src={logoMK} alt="Logo MK" width={40} height={40} />
           </Brand>
           <div className="flex items-center px-4 gap-2">
-            <Cart />
+            <CartIcon />
             <Navbar />
             <button className="lg:hidden" onClick={toggleMenu}>
               {isCLicked ? (

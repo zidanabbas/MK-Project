@@ -10,7 +10,7 @@ export const getCart = async (callback) => {
     callback(error);
   }
 };
-export const addToCart = async (formData, callback) => {
+export const addCart = async (formData, callback) => {
   try {
     const response = await axios.post(`${authEndPoint}/carts`, formData);
     callback(response.data);
