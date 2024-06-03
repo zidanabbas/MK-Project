@@ -8,12 +8,20 @@ import MobileNav from "@/components/fragments/Header/MobileNav";
 import Icon from "@mdi/react";
 import { mdiMenu, mdiMenuOpen } from "@mdi/js";
 import CartButton from "@/components/ui/Button/CartButton";
+import CartModal from "../CartModal";
 
 export default function Header() {
   const [isCLicked, setIsClicked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const toggleMenu = () => {
     setIsClicked(!isCLicked);
   };
+
+  const toggleCart = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className="fixed h-12 py-2 w-full -top-1 left-0 z-10 flex items-center bg-Headline">
       <div className="container relative">
@@ -22,7 +30,8 @@ export default function Header() {
             <Image src={logoMK} alt="Logo MK" width={40} height={40} />
           </Brand>
           <div className="flex items-center px-4 gap-2">
-            <CartButton />
+            <CartButton onClick={toggleCart} />
+
             <Navbar />
             <button className="lg:hidden" onClick={toggleMenu}>
               {isCLicked ? (
@@ -35,6 +44,7 @@ export default function Header() {
         </div>
       </div>
       {isCLicked && <MobileNav />}
+      {isOpen && <CartModal />}
     </header>
   );
 }
