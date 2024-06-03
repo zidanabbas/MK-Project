@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Layouts from "@/components/layouts/BodyLayouts/page";
-import ContainerSection from "@/components/layouts/SectionLayouts/page";
 import CartItem from "@/components/fragments/Cart/CartItem";
 import { useSelector, useDispatch } from "react-redux";
+import ContainerSection from "@/components/layouts/SectionLayouts";
 
 export default function CartPage() {
   const cart = useSelector((state) => state.cart.data);

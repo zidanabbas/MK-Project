@@ -1,9 +1,9 @@
 "use client";
-import ContainerSection from "@/components/layouts/SectionLayouts/page";
 import { getDetailProduct } from "@/services/product-service";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import DetailProduct from "@/components/fragments/DetailProduct";
+import ContainerSection from "@/components/layouts/SectionLayouts";
 
 export default function DetailMenu() {
   const { id } = useParams();

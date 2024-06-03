@@ -7,7 +7,7 @@ import logoMK from "@/assets/image/logo-brand.png";
 import MobileNav from "@/components/fragments/Header/MobileNav";
 import Icon from "@mdi/react";
 import { mdiMenu, mdiMenuOpen } from "@mdi/js";
-import CartIcon from "@/components/ui/CartButton";
+import CartButton from "@/components/ui/Button/CartButton";
 
 export default function Header() {
   const [isCLicked, setIsClicked] = useState(false);
@@ -22,7 +22,7 @@ export default function Header() {
             <Image src={logoMK} alt="Logo MK" width={40} height={40} />
           </Brand>
           <div className="flex items-center px-4 gap-2">
-            <CartIcon />
+            <CartButton />
             <Navbar />
             <button className="lg:hidden" onClick={toggleMenu}>
               {isCLicked ? (
