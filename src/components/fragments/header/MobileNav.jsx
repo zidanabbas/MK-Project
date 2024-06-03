@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logoMK from "@/assets/image/logo-brand.png";
 
-export default function NavMobile() {
+export default function MobileNav() {
   return (
     <nav className="lg:hidden absolute top-12 right-0 bg-Headline py-5 shadow-2xl rounded-b-lg max-w-64 w-full">
       <div className="w-20">
