@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Layouts from "@/components/layouts/BodyLayouts/page";
-import CartItem from "@/components/fragments/Cart/CartItem";
+import CartItem from "@/components/fragments/cart/CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "@/lib/redux/slices/cartSlices";
 import Summary from "@/components/fragments/Summary";
