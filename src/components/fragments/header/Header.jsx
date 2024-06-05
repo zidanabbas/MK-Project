@@ -8,7 +8,7 @@ import MobileNav from "@/components/fragments/Header/MobileNav";
 import Icon from "@mdi/react";
 import { mdiMenu, mdiMenuOpen } from "@mdi/js";
 import CartButton from "@/components/ui/Button/CartButton";
-import CartModal from "../CartModal";
+import CartModal from "@/components/fragments/CartModal";
 
 export default function Header() {
   const [isCLicked, setIsClicked] = useState(false);
