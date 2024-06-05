@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from "@/components/fragments/header/Navbar";
+import Navbar from "@/components/fragments/Header/Navbar";
 import Brand from "@/components/ui/Brand";
 import Image from "next/image";
 import logoMK from "@/assets/image/logo-brand.png";
-import MobileNav from "@/components/fragments/header/MobileNav";
+import MobileNav from "@/components/fragments/Header/MobileNav";
 import Icon from "@mdi/react";
 import { mdiMenu, mdiMenuOpen } from "@mdi/js";
 import CartButton from "@/components/ui/Button/CartButton";
