@@ -1,8 +1,8 @@
 "use client";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/fragments/Header/Header"; // Corrected import path
-import Footer from "@/components/fragments/Footer/Footer"; // Corrected import path
+import Header from "@/components/fragments/header/Header"; // Corrected import path
+import Footer from "@/components/fragments/footer/Footer"; // Corrected import path
 import Layouts from "@/components/layouts/BodyLayouts/page";
 import { usePathname } from "next/navigation";
 import { Provider } from "react-redux";
