@@ -12,3 +12,146 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Products {
+  id           Int            @id @default(autoincrement())
+  title        String
+  image        String?
+  price        Float
+  category     String
+  isAvailable  Boolean        @default(false)
+  isFavourite  Boolean        @default(false)
+  description  String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  CartProducts CartProducts[]
+  OrderItems   OrderItems[] // Tambahkan relasi ke OrderItems
+}
+
+model Users {
+  id             Int              @id @default(autoincrement())
+  email          String           @unique
+  name           String
+  password       String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  role           Role             @default(USER)
+  Carts          Carts[]
+  Orders         Orders[] // Tambahkan relasi ke Orders
+  UserPromotions UserPromotions[]
+}
+
+model Carts {
+  id       Int            @id @default(autoincrement())
+  userId   Int
+  date     DateTime       @default(now())
+  user     Users          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  products CartProducts[]
+}
+
+model CartProducts {
+  id        Int      @id @default(autoincrement())
+  cartId    Int
+  productId Int
+  quantity  Int
+  cart      Carts    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product   Products @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@unique([cartId, productId])
+}
+
+// --- START PENAMBAHAN UNTUK PAYMENT & PROMO ---
+
+model Orders {
+  id              Int           @id @default(autoincrement())
+  userId          Int
+  orderId         String        @unique // Unique ID dari sistem Anda, sering juga dipakai untuk Midtrans order_id
+  grossAmount     Float
+  paymentStatus   PaymentStatus @default(PENDING) // Status pembayaran
+  transactionId   String?       @unique // ID transaksi dari Midtrans (contoh: dari notifikasi)
+  paymentMethod   String? // Metode pembayaran yang digunakan (contoh: bank transfer, GoPay)
+  vaNumber        String? // Nomor Virtual Account (jika applicable)
+  bank            String? // Bank yang digunakan untuk VA/transfer
+  paymentDate     DateTime? // Tanggal pembayaran berhasil
+  transactionTime DateTime      @default(now()) // Waktu transaksi dibuat di Midtrans
+  snapToken       String? // Token SNAP dari Midtrans (untuk frontend)
+  redirectUrl     String? // URL redirect setelah pembayaran (jika Snap Redirect)
+  fraudStatus     String? // Status fraud dari Midtrans (accept, challenge, deny)
+  statusMessage   String? // Pesan status dari Midtrans
+  signatureKey    String? // Opsional: untuk verifikasi callback
+
+  user       Users        @relation(fields: [userId], references: [id], onDelete: Restrict)
+  orderItems OrderItems[] // Produk-produk dalam order ini
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OrderItems {
+  id        Int   @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int
+  price     Float // Harga per unit saat order dibuat (penting untuk histori, harga bisa berubah)
+
+  order   Orders   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Products @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@unique([orderId, productId]) // Pastikan tidak ada duplikat produk dalam satu order
+}
+
+model Promotions {
+  id                Int       @id @default(autoincrement())
+  code              String    @unique // Kode promo, misal "DISKON10"
+  type              PromoType // Tipe promo: PERCENTAGE, FIXED_AMOUNT, FREE_DELIVERY
+  value             Float // Nilai diskon (misal 0.1 untuk 10%, atau 10000 untuk Rp10.000)
+  minOrderAmount    Float? // Minimum jumlah pesanan agar promo berlaku
+  maxDiscountAmount Float? // Batas maksimum diskon (untuk PERCENTAGE)
+  startDate         DateTime
+  endDate           DateTime
+  usageLimit        Int? // Batas total penggunaan promo (misal 1000 kali)
+  usedCount         Int       @default(0) // Berapa kali promo sudah digunakan
+  isActive          Boolean   @default(true) // Apakah promo aktif
+  scope             String? // Opsional: Misal "ALL_USERS", "NEW_USERS", atau "SPECIFIC_PRODUCTS" (JSON string of product IDs)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  UserPromotions UserPromotions[] // Relasi untuk mencatat penggunaan promo per user
+}
+
+model UserPromotions {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  promotionId Int
+  usageCount  Int       @default(0) // Berapa kali user ini menggunakan promo ini
+  lastUsedAt  DateTime?
+
+  user      Users      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  promotion Promotions @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, promotionId]) // Memastikan satu entry per user per promo
+}
+
+enum PaymentStatus {
+  PENDING // Menunggu pembayaran
+  SETTLEMENT // Pembayaran berhasil
+  EXPIRE // Pembayaran kadaluarsa
+  CANCEL // Pembayaran dibatalkan
+  DENY // Pembayaran ditolak oleh bank
+  REFUND // Pembayaran dikembalikan
+  CHALLENGE // Pembayaran memerlukan verifikasi lebih lanjut
+  FAILURE // Pembayaran gagal (contoh: credit card declined)
+}
+
+enum PromoType {
+  PERCENTAGE
+  FIXED_AMOUNT
+}
+
+// --- END PENAMBAHAN UNTUK PAYMENT & PROMO ---
+
+enum Role {
+  ADMIN
+  USER
+}
